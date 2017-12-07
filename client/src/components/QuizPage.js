@@ -1,10 +1,10 @@
 import React from "react";
 import Page from "./Page";
-//import axios from "axios";
+import axios from "axios";
 
 export default class QuizPage extends React.Component {
     componentWillMount() {
-        //axios.get("/api/quiz").then(response => console.log(response));
+        axios.get("/api/random").then(response => console.log(response)).catch((error => console.log));
         console.log('mounted');
     }
     render() {

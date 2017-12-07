@@ -6,7 +6,7 @@ export default class HomePage extends React.Component {
         return (
             <Page >
                 <div className="jumbotron">
-                    <h1>Hola</h1>
+                    <h1>Welcome to a thought in process</h1>
                     <p><a className="btn btn-primary btn-lg" id="game-starter" href="/quiz" role="button">Start the game</a></p>
                 </div>
             </Page>

@@ -24,15 +24,16 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.get("/api/quiz", function (req, res) {
+app.get("/api/random", function (req, res) {
   //query db and return data for one country/capital
   //send coordinates to google map
   db.countrydata.find().sort({name:1}, function (error, found){
     if (error){
       console.log(error);
     } else {
-      res.json(found)
-      console.log(found);
+      const result = found[Math.floor(Math.random()*found.length)]
+      res.json(result)
+      console.log(result);
     }
   });
   // db.countrydata.aggregate([{ $sample: { size: 1 } }], function (error, found) {
