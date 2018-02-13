@@ -1,3 +1,13 @@
+Geo Quiz will be a trivia game based on country locations and capitals and will utilize Google Maps API for game clues.
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
