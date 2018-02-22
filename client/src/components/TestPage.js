@@ -13,7 +13,7 @@ export default class TestPage extends React.Component {
     }
     componentDidMount() {
         axios.get("/api/testpage").then(response => this.setState({ countryNames: response.data }))
-        .catch((error => console.log))
+            .catch((error => console.log))
         this.setState(() => ({ number: 22 }));
     }
 
@@ -27,12 +27,18 @@ export default class TestPage extends React.Component {
                         <p>{this.state.number}</p>
                         <p>{this.state.number}</p>
                         <ul>
-                            {this.state.countryNames.map((name, index)=>
-                            <li key={index}>{name}</li>)}
+                            {this.state.countryNames.map((name, index) =>
+                                <li key={index}>{name}</li>)}
+                        </ul>
+                    </div>
+                    <div className="buttons">
+                        <ul>
+                            {this.state.countryNames.map((name, index) =>
+                                <li key={index}><button>{name}</button></li>)}
                         </ul>
                     </div>
                 </div>
-                
+
             </Page>
         )
     }
