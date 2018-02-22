@@ -8,7 +8,7 @@ import TestPage from './components/TestPage';
 class GeoApp extends Component {
   constructor(props) {
     super(props);
-    // this.handleAllCountries = this.handleAllCountries.bind(this);
+    
   }
   render() {
     return (

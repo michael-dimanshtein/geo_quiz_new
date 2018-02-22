@@ -3,26 +3,36 @@ import Page from "./Page";
 import axios from "axios";
 
 export default class TestPage extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.handleAllCountries = this.handleAllCountries.bind(this);
+        this.state = {
+            countryNames: ["allen", "boss"],
+            number: 12
+
+        };
     }
-    handleAllCountries(e) {
-        // e.preventDefault();
-        axios.get("/api/testpage").then(response => console.log(response)).catch((error => console.log));
-        
+    componentDidMount() {
+        axios.get("/api/testpage").then(response => this.setState({ countryNames: response.data }))
+        .catch((error => console.log))
+        this.setState(() => ({ number: 22 }));
     }
+
     render() {
         return (
             <Page>
                 <div className="jumbotron">
                     <h1>we're testing </h1>
-                    <p>Where you can select coutry</p>
-                    <button className="square" onClick={(e)=>{ 
-                        this.handleAllCountries();
-                        (console.log("show countries"))}
-                    }>Click to list all possible countries</button>
+                    <p>Where you can select country</p>
+                    <div className="result">
+                        <p>{this.state.number}</p>
+                        <p>{this.state.number}</p>
+                        <ul>
+                            {this.state.countryNames.map((name, index)=>
+                            <li key={index}>{name}</li>)}
+                        </ul>
+                    </div>
                 </div>
+                
             </Page>
         )
     }

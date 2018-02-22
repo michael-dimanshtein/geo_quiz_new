@@ -46,7 +46,7 @@ app.get("/api/testpage", function (req, res) {
       const nameOnly=[];
       found.forEach(element => nameOnly.push(element.name));
       console.log(nameOnly);
-      res.json(nameOnly);
+      res.send(nameOnly);
     }
   });
 });
