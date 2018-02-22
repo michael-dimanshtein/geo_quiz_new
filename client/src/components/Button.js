@@ -1,14 +1,15 @@
 import React from "react";
 
-export default class Button extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-    render() {
-        return (
-            <div>
-            </div>
-        );
-    }
+const Button = (props) => {
+    return(
+        <div>
+            
+            <button onClick = {(e) => {props.handleButtonClick()}}
+            >
+            {props.buttonText}
+            </button>
+        </div>
+    )
 }
+
+export default Button;

@@ -1,16 +1,22 @@
 import React from "react";
 import Page from "./Page";
 import axios from "axios";
+import Button from "./Button";
 
 export default class TestPage extends React.Component {
     constructor(props) {
         super(props);
+        this.handleButtonClick = this.handleButtonClick.bind();
         this.state = {
-            countryNames: ["allen", "boss"],
+            countryNames: [],
             number: 12
 
         };
     }
+    handleButtonClick() {
+        alert("button click");
+    }
+
     componentDidMount() {
         axios.get("/api/testpage").then(response => this.setState({ countryNames: response.data }))
             .catch((error => console.log))
@@ -21,22 +27,22 @@ export default class TestPage extends React.Component {
         return (
             <Page>
                 <div className="jumbotron">
-                    <h1>we're testing </h1>
-                    <p>Where you can select country</p>
-                    <div className="result">
-                        <p>{this.state.number}</p>
-                        <p>{this.state.number}</p>
-                        <ul>
-                            {this.state.countryNames.map((name, index) =>
-                                <li key={index}>{name}</li>)}
-                        </ul>
+                    <h1>Country info page </h1>
+                    <p>Where you can select the country to get more info</p>
+
+                    
+                    <div>
+                        {this.state.countryNames.map((country) => (
+                            <Button
+                                key={country}
+                                buttonText={country}
+                            />
+                        ))
+                        }
                     </div>
-                    <div className="buttons">
-                        <ul>
-                            {this.state.countryNames.map((name, index) =>
-                                <li key={index}><button>{name}</button></li>)}
-                        </ul>
-                    </div>
+
+
+
                 </div>
 
             </Page>
