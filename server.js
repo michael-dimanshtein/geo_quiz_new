@@ -50,6 +50,20 @@ app.get("/api/testpage", function (req, res) {
     }
   });
 });
+
+app.get("/api/single_info", function(req, res){
+console.log(req.query.name);
+var name ="";
+name = req.query.name;
+  db.countrydata.find({name:name}, function(error, found){
+    if (error){
+      console.log(error);
+    } else {
+      console.log(found);
+      res.send(found);
+    }
+  });
+});
   // db.countrydata.aggregate([{ $sample: { size: 1 } }], function (error, found) {
   //     if (error) {
   //         res.json(error);

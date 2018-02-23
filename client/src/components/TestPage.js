@@ -16,6 +16,7 @@ export default class TestPage extends React.Component {
 
     handleButtonClick(buttonText) {
         alert(buttonText);
+        axios.get("/api/single_info", {params:{name:"Angola"}}).then(response => console.log(response)).catch((error => console.log))
     }
 
     componentDidMount() {
