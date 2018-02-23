@@ -11,10 +11,11 @@ export default class TestPage extends React.Component {
             countryNames: [],
             number: 12
 
-        };
+        }
     }
-    handleButtonClick() {
-        alert("button click");
+
+    handleButtonClick(buttonText) {
+        alert(buttonText);
     }
 
     componentDidMount() {
@@ -29,22 +30,17 @@ export default class TestPage extends React.Component {
                 <div className="jumbotron">
                     <h1>Country info page </h1>
                     <p>Where you can select the country to get more info</p>
-
-                    
                     <div>
                         {this.state.countryNames.map((country) => (
                             <Button
                                 key={country}
                                 buttonText={country}
+                                handleButtonClick={this.handleButtonClick}
                             />
                         ))
                         }
                     </div>
-
-
-
                 </div>
-
             </Page>
         )
     }
