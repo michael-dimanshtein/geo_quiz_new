@@ -8,15 +8,13 @@ export default class TestPage extends React.Component {
         super(props);
         this.handleButtonClick = this.handleButtonClick.bind();
         this.state = {
-            countryNames: [],
-            number: 12
-
+            countryNames: []
         }
     }
 
     handleButtonClick(buttonText) {
         alert(buttonText);
-        axios.get("/api/single_info", {params:{name:"Angola"}}).then(response => console.log(response)).catch((error => console.log))
+        axios.get("/api/single_info", {params:{name:buttonText}}).then(response => console.log(response)).catch((error => console.log))
     }
 
     componentDidMount() {
