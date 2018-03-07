@@ -2,25 +2,30 @@ import React from "react";
 import Page from "./Page";
 import axios from "axios";
 import Button from "./Button";
+import Info from "./Info";
 
 export default class TestPage extends React.Component {
     constructor(props) {
         super(props);
         this.handleButtonClick = this.handleButtonClick.bind();
         this.state = {
-            countryNames: []
+            countryNames: [],
+            currentCountry: "trees"
         }
     }
 
     handleButtonClick(buttonText) {
-        alert(buttonText);
-        axios.get("/api/single_info", {params:{name:buttonText}}).then(response => console.log(response)).catch((error => console.log))
+        // alert(buttonText);
+        axios.get("/api/single_info", {params:{name:buttonText}})
+        .then(response => this.setState((prevState)=>({currentCountry:response.data})))
+        .catch((error => console.log))
     }
 
     componentDidMount() {
         axios.get("/api/testpage").then(response => this.setState({ countryNames: response.data }))
             .catch((error => console.log))
         this.setState(() => ({ number: 22 }));
+
     }
 
     render() {
@@ -40,6 +45,10 @@ export default class TestPage extends React.Component {
                         }
                     </div>
                 </div>
+                <div className="display_info">
+                        {this.state.currentCountry}
+                </div>
+            <Info />
             </Page>
         )
     }
