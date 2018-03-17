@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "./Button";
 import Info from "./Info";
 
+
 export default class TestPage extends React.Component {
     constructor(props) {
         super(props);
@@ -17,8 +18,10 @@ export default class TestPage extends React.Component {
     handleButtonClick(buttonText) {
         // alert(buttonText);
         axios.get("/api/single_info", {params:{name:buttonText}})
-        .then(response => this.setState((prevState)=>({currentCountry:response.data})))
-        .catch((error => console.log))
+        .then(response => this.setState((prevState)=>({currentCountry:response.data.name})))
+        // .then(response => console.log(response))
+        .catch((error => console.log));
+        // console.log(this.state.currentCountry);
     }
 
     componentDidMount() {
@@ -43,10 +46,8 @@ export default class TestPage extends React.Component {
                             />
                         ))
                         }
+                        
                     </div>
-                </div>
-                <div className="display_info">
-                        {this.state.currentCountry}
                 </div>
             <Info />
             </Page>
