@@ -6,10 +6,7 @@ import QuizPage from './components/QuizPage';
 import TestPage from './components/TestPage';
 
 class GeoApp extends Component {
-  constructor(props) {
-    super(props);
-    
-  }
+
   render() {
     return (
       <Router>
